@@ -24,6 +24,8 @@ public class Game {
         writer = new BufferedWriter(new OutputStreamWriter(System.out));
     }
 
+
+
     public int toInt(String string) {
         try{
             return Integer.parseInt(string);
