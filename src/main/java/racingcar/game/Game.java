@@ -57,7 +57,6 @@ public class Game {
     public void UpdateCars() throws Exception {
         for(CarData cd : cardatas) {
             cd.Update();
-            //자동차 진행상황 출력
             StringBuilder sb = new StringBuilder(cd.getName()+" : ");
             for(int k = 0; k<cd.getRunCount(); k++) {
                 sb.append("-");
@@ -80,7 +79,6 @@ public class Game {
                 winner.add(cd);
             }
         }
-        //출력
         StringBuilder mes = new StringBuilder("최종 우승자 : ");
         for(int j = 0; j<winner.size()-1; j++) {
             mes.append(winner.get(j).getName()).append(", ");
@@ -90,19 +88,16 @@ public class Game {
     }
 
     public void StartGame() throws Exception {
-        InputCars(); //자동차 입력
-        InputCount(); //실행횟수 입력
-
+        InputCars();
+        InputCount();
         writer.write("\n실행 결과\n");
         writer.flush();
-
-        for(int j = 0; j<count; j++) { //입력한 수만큼 반복
-            UpdateCars(); //자동차들을 모두 업데이트
+        for(int j = 0; j<count; j++) {
+            UpdateCars();
             writer.write("\n");
-            writer.flush(); //줄넘김
+            writer.flush();
         }
-
-        OutputWinner(); //우승자 출력
+        OutputWinner();
     }
 
     public void EndGame() throws Exception {
