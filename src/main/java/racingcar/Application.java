@@ -9,8 +9,8 @@ public class Application {
         // TODO: 프로그램 구현
         Game game = new Game();
         try{
-            game.StartGame();
-            game.EndGame();
+            game.startGame();
+            game.endGame();
         }catch(Exception e) {
             throw new IllegalArgumentException(e.getMessage());
         }

@@ -24,7 +24,10 @@ public class Game {
         writer = new BufferedWriter(new OutputStreamWriter(System.out));
     }
 
-
+    public void flushOutput(String string) throws Exception {
+        writer.write(string);
+        writer.flush();
+    }
 
     public int toInt(String string) {
         try{
@@ -35,8 +38,7 @@ public class Game {
     }
 
     public void inputCars() throws Exception {
-        writer.write("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
-        writer.flush();
+        flushOutput("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
         String[] cars = Console.readLine().split(",");
         cardatas = new CarData[cars.length];
         for(int i = 0; i<cars.length; i++) {
@@ -48,8 +50,7 @@ public class Game {
     }
 
     public void inputCount() throws Exception {
-        writer.write("시도할 회수는 몇회인가요?\n");
-        writer.flush();
+        flushOutput("시도할 회수는 몇회인가요?\n");
         count = toInt(Console.readLine());
         if(count<1) {
             throw new IllegalArgumentException("1이상의 정수를 입력해주세요. 입력해주세요.");
@@ -64,12 +65,11 @@ public class Game {
                 sb.append("-");
             }
             sb.append("\n");
-            writer.write(sb.toString());
-            writer.flush();
+            flushOutput(sb.toString());
         }
     }
 
-    public void outputWinner() {
+    public void outputWinner() throws Exception {
         int maxcount = 0;
         ArrayList<CarData> winner = new ArrayList<>();
         for(CarData cd : cardatas) {
@@ -86,18 +86,16 @@ public class Game {
             mes.append(winner.get(j).getName()).append(", ");
         }
         mes.append(winner.get(winner.size()-1).getName());
-        System.out.println(mes.toString());
+        flushOutput(mes.toString());
     }
 
     public void startGame() throws Exception {
         inputCars();
         inputCount();
-        writer.write("\n실행 결과\n");
-        writer.flush();
+        flushOutput("\n실행 결과\n");
         for(int j = 0; j<count; j++) {
             updateCars();
-            writer.write("\n");
-            writer.flush();
+            flushOutput("\n");
         }
         outputWinner();
     }
