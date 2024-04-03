@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class CarData {
 
-    private String name;
+    private final String name;
     private int runcount = 0;
 
     public CarData(String name) {
