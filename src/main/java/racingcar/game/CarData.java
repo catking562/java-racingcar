@@ -11,7 +11,7 @@ public class CarData {
         this.name = name;
     }
 
-    public void Update() {
+    public void update() {
         if( Randoms.pickNumberInRange(0,9)>3) {
             addCount();
         }

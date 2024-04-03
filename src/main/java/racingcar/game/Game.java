@@ -32,7 +32,7 @@ public class Game {
         }
     }
 
-    public void InputCars() throws Exception {
+    public void inputCars() throws Exception {
         writer.write("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n");
         writer.flush();
         String[] cars = Console.readLine().split(",");
@@ -45,7 +45,7 @@ public class Game {
         }
     }
 
-    public void InputCount() throws Exception {
+    public void inputCount() throws Exception {
         writer.write("시도할 회수는 몇회인가요?\n");
         writer.flush();
         count = toInt(Console.readLine());
@@ -54,9 +54,9 @@ public class Game {
         }
     }
 
-    public void UpdateCars() throws Exception {
+    public void updateCars() throws Exception {
         for(CarData cd : cardatas) {
-            cd.Update();
+            cd.update();
             StringBuilder sb = new StringBuilder(cd.getName()+" : ");
             for(int k = 0; k<cd.getRunCount(); k++) {
                 sb.append("-");
@@ -67,7 +67,7 @@ public class Game {
         }
     }
 
-    public void OutputWinner() {
+    public void outputWinner() {
         int maxcount = 0;
         ArrayList<CarData> winner = new ArrayList<>();
         for(CarData cd : cardatas) {
@@ -87,20 +87,20 @@ public class Game {
         System.out.println(mes.toString());
     }
 
-    public void StartGame() throws Exception {
-        InputCars();
-        InputCount();
+    public void startGame() throws Exception {
+        inputCars();
+        inputCount();
         writer.write("\n실행 결과\n");
         writer.flush();
         for(int j = 0; j<count; j++) {
-            UpdateCars();
+            updateCars();
             writer.write("\n");
             writer.flush();
         }
-        OutputWinner();
+        outputWinner();
     }
 
-    public void EndGame() throws Exception {
+    public void endGame() throws Exception {
         writer.close();
     }
 }
