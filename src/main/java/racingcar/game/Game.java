@@ -58,8 +58,8 @@ public class Game {
         for(CarData cd : cardatas) {
             cd.Update();
             //자동차 진행상황 출력
-            StringBuilder sb = new StringBuilder(cd.name+" : ");
-            for(int k = 0; k<cd.runcount; k++) {
+            StringBuilder sb = new StringBuilder(cd.getName()+" : ");
+            for(int k = 0; k<cd.getRunCount(); k++) {
                 sb.append("-");
             }
             sb.append("\n");
@@ -72,10 +72,10 @@ public class Game {
         int maxcount = 0;
         ArrayList<CarData> winner = new ArrayList<>();
         for(CarData cd : cardatas) {
-            if(cd.runcount==maxcount) {
+            if(cd.getRunCount()==maxcount) {
                 winner.add(cd);
-            }else if(cd.runcount>maxcount) {
-                maxcount = cd.runcount;
+            }else if(cd.getRunCount()>maxcount) {
+                maxcount = cd.getRunCount();
                 winner.clear();
                 winner.add(cd);
             }
@@ -83,9 +83,9 @@ public class Game {
         //출력
         StringBuilder mes = new StringBuilder("최종 우승자 : ");
         for(int j = 0; j<winner.size()-1; j++) {
-            mes.append(winner.get(j).name).append(", ");
+            mes.append(winner.get(j).getName()).append(", ");
         }
-        mes.append(winner.get(winner.size()-1).name);
+        mes.append(winner.get(winner.size()-1).getName());
         System.out.println(mes.toString());
     }
 

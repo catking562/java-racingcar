@@ -4,8 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class CarData {
 
-    public String name;
-    public int runcount = 0;
+    private String name;
+    private int runcount = 0;
 
     public CarData(String name) {
         this.name = name;
@@ -15,6 +15,14 @@ public class CarData {
         if( Randoms.pickNumberInRange(0,9)>3) {
             addCount();
         }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getRunCount() {
+        return runcount;
     }
 
     public void addCount() {
