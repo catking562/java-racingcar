@@ -71,7 +71,7 @@ public class Game {
 
     public void outputWinner() throws Exception {
         int maxcount = 0;
-        ArrayList<CarData> winner = new ArrayList<>();
+        ArrayList<CarData> winner = new ArrayList<>(cardatas.length);
         for(CarData cd : cardatas) {
             if(cd.getRunCount()==maxcount) {
                 winner.add(cd);
